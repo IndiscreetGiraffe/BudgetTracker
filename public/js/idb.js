@@ -38,9 +38,25 @@ function uploadTransaction() {
                     'Content-Type': 'applicattion/json'
                 }
             })
+            .then(response => response.json())
+            .then(serverResponse => {
+                if(serverResponse.message) {
+                    throw new Error(serverResponse);
+                }
+
+                const transaction = db.transaction(['new_transaction'], 'readwrite');
+                const trackerObjectStore = transaction.objectStore('new_transaction');
+                trackerObjectStore.clear();
+                alert('All saved transactions have been submitted!');
+            })
+            .catch(err => {
+                console.log(err);
+            });
         }
-    }
-}
+    };
+};
+
+window.addEventListener('online', uploadTransaction);
 
 
   
