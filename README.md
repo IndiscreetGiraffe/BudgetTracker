@@ -17,7 +17,7 @@
   An application with a graph to help you keep track of your finances through a budget, and one that will still work even when the user is offline.
 
   
-  <img src = "./assets/images/screenshot.png">
+  <img src = "./public/images/screenshot.png">
   
  
   ## Languages Used 
